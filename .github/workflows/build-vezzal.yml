@@ -1,6 +1,5 @@
 name: CI
 
-# Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
@@ -11,16 +10,16 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
         - name: checkout
           uses: "actions/checkout@v2"
-        - name: listing files
-          run: ls -al $GITHUB_WORKSPACE
+        - name: docker login 
+          run:  docker login -u vezzal -p $DOCKER_PASSWORD
+        - name: update-vezzal
+        - run:  ./$GITHUB_WORKSPACE/.github/build-vezzal.sh
+        - name: push updated image
+          run:  docker push vezzal/vezzal:testing
