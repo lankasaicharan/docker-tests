@@ -23,4 +23,4 @@ jobs:
         - name: checkout
           uses: "actions/checkout@v2"
         - name: listing files
-          run: ls -al ${{ github.repository }}
+          run: ls -al $GITHUB_WORKSPACE
