@@ -20,6 +20,6 @@ jobs:
         - name: docker login 
           run:  docker login -u vezzal -p $DOCKER_PASSWORD
         - name: update-vezzal
-        - run:  ./$GITHUB_WORKSPACE/.github/build-vezzal.sh
+          run:  ./$GITHUB_WORKSPACE/.github/build-vezzal.sh
         - name: push updated image
           run:  docker push vezzal/vezzal:testing
