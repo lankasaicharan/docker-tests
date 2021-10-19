@@ -19,7 +19,8 @@ jobs:
           uses: "actions/checkout@v2"
         - name: docker login 
           run:  docker login -u vezzal -p ${{secrets.DOCKER_PASSWORD}}
+        - name: granting permissions
+          run:  chmod +x $GITHUB_WORKSPACE/.github/build-vezzal.sh
         - name: update-vezzal
           run:  $GITHUB_WORKSPACE/.github/build-vezzal.sh
-        - name: push updated image
-          run:  docker push vezzal/vezzal:testing
+
