@@ -23,4 +23,4 @@ jobs:
         - name: checkout
           uses: "actions/checkout@v2"
         - name: listing files
-          run: cat ${{ github.repository }}/test1.txt
+          run: ls -al ${{ github.repository }}
